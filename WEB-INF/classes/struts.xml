@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="root" namespace="/" extends="struts-default">
+	
+	<interceptors>
+		<interceptor-stack name="mystack">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</interceptor-stack>
+		
+		
+	</interceptors>
+	
+	<action name="register" class="com.action.RegisterAction">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result name="invalid.token">/index.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="input">/index.jsp</result>
+			
+			
+		</action>
+		<action name="verfyCode" class="com.action.verfyCodeAction"> 
+			<result type="stream">
+				<param name="contentType">image/JPEG</param>  
+    			<param name="inputName">inputStream</param>  
+			</result>
+		</action>
+		
+		
+	</package>
+
+</struts>    
